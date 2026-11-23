@@ -7,16 +7,15 @@ body, h1, h2, h3, h4, h5, h6,
     text-transform: none; /* 取消 Bootstrap 預設強制英文字母大寫 */
 }
 
-/* 履歷章節大標題保留大寫視覺樣式 */
+/* 針對履歷的大標題 (h2)，保留大寫視覺樣式 */
 h2 {
     text-transform: uppercase;
 }
 
 /* =========================================================
-   2. 全站主題色彩客製化 (覆蓋 Bootstrap CSS 變數)
+   2. 全站主題色彩客製化 (深大海藍主題色)
    ========================================================= */
 :root {
-    /* 範例為高質感「深大海藍」 (RGB: 25, 25, 112)，可依喜好在 Adobe Color 挑選替換 */
     --bs-primary-rgb: 25, 25, 112;
     --bs-link-color: rgb(25, 25, 112);
     --bs-link-hover-color: rgb(15, 15, 80);
@@ -31,58 +30,41 @@ h2 {
    3. 履歷內容區塊背景優化
    ========================================================= */
 .resume-section {
-    background-color: rgb(255, 248, 220); /* 柔和淡乳黃色背景 */
-    /* 若有下載 Transparent Textures 紋理圖放入 assets/img/，可取消下方註解 */
-    /* background-image: url('../assets/img/white-wall-3-2.png'); */
+    background-color: rgb(248, 250, 252);
 }
 
 /* =========================================================
-   4. Bento Grid 便當盒風格作品集樣式
-   ========================================================= */
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-}
-
-.bento-item {
-    background-color: #ffffff;
-    border: 1px solid #e9ecef;
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.bento-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
-}
-
-@media (min-width: 768px) {
-    .bento-wide {
-        grid-column: span 2;
-    }
-}
-
-/* =========================================================
-   5. Waterfall 瀑布流風格作品集樣式（備用）
+   4. Waterfall 瀑布流風格作品集樣式 (3 欄錯落排版)
    ========================================================= */
 .waterfall-container {
-    column-count: 3;
+    column-count: 3; /* 電腦螢幕切分為 3 欄瀑布流 */
     column-gap: 20px;
 }
 
 .waterfall-item {
-    break-inside: avoid;
+    break-inside: avoid; /* 防止卡片被欄位裁切跨欄 */
     margin-bottom: 20px;
     background-color: #ffffff;
-    border: 1px solid #e9ecef;
+    border: 1px solid #e2e8f0;
     border-radius: 12px;
-    padding: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.waterfall-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 平板螢幕自動調整為 2 欄 */
+@media (max-width: 992px) {
+    .waterfall-container {
+        column-count: 2;
+    }
+}
+
+/* 手機版自動還原為單欄顯示 */
 @media (max-width: 768px) {
     .waterfall-container {
         column-count: 1;
